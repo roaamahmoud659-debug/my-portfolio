@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roaa Al-Hourani — Digital Marketing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1612;
+    --cream: #f5f0e8;
+    --accent: #c8572b;
+    --warm: #e8d5b0;
+    --muted: #8a7d6e;
+    --card-dark: #1a1612;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --arabic: 'Noto Naskh Arabic', serif;
+    --nav-h: 64px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.5;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(26,22,18,0.08);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .nav-logo-mark {
+    width: 32px; height: 32px;
+    background: var(--ink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .nav-logo-mark span {
+    color: var(--cream);
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    display: none;
+  }
+
+  @media (min-width: 480px) {
+    .nav-name { display: block; }
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-links {
+    display: none;
+    list-style: none;
+    gap: 28px;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .nav-links { display: flex; }
+    nav { padding: 0 40px; }
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+
+  .nav-links a:hover { opacity: 1; }
+
+  .lang-toggle {
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 100px;
+    font-family: var(--sans);
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+
+  .lang-toggle:hover {
+    background: var(--accent);
+  }
+
+  /* ── SECTIONS ── */
+  section {
+    padding-top: var(--nav-h);
+    min-height: 100svh;
+  }
+
+  .section-inner {
+    padding: 60px 20px;
+  }
+
+  @media (min-width: 768px) {
+    .section-inner { padding: 80px 40px; }
+  }
+
+  @media (min-width: 1200px) {
+    .section-inner { padding: 100px 80px; max-width: 1400px; margin: 0 auto; }
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  [dir="rtl"] .section-label::after {
+    order: -1;
+  }
+
+  /* ── HOME ── */
+  #home {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #home .section-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+
+  .home-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 52px;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .home-layout {
+      grid-template-columns: 1fr 380px;
+      gap: 60px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .home-layout {
+      grid-template-columns: 1fr 440px;
+    }
+  }
+
+  [dir="rtl"] .home-layout {
+    direction: rtl;
+  }
+
+  .home-text { order: 2; }
+
+  @media (min-width: 768px) {
+    .home-text { order: 1; }
+  }
+
+  .home-tagline {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .home-headline {
+    font-family: var(--serif);
+    font-size: clamp(48px, 10vw, 88px);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .home-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .home-bio {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--ink);
+    opacity: 0.75;
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .home-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .meta-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .meta-value {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: #4caf50;
+    border-radius: 50%;
+    margin-right: 6px;
+    animation: pulse 2s infinite;
+  }
+
+  [dir="rtl"] .status-dot { margin-right: 0; margin-left: 6px; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Photo column */
+  .home-photo-wrap {
+    order: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .home-photo-wrap { order: 2; }
+  }
+
+  [dir="rtl"] .home-photo-wrap {
+    order: 1;
+  }
+
+  [dir="rtl"] @media (min-width: 768px) {
+    .home-photo-wrap { order: 1; }
+    .home-text { order: 2; }
+  }
+
+  .photo-accent {
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    background: var(--warm);
+    border-radius: 60% 40% 55% 45% / 45% 55% 40% 60%;
+    top: -5%;
+    left: 10%;
+    z-index: 0;
+    transition: left 0.3s, right 0.3s;
+  }
+
+  [dir="rtl"] .photo-accent {
+    left: auto;
+    right: 10%;
+  }
+
+  .photo-frame {
+    position: relative;
+    z-index: 1;
+    width: min(280px, 80vw);
+    height: min(380px, 110vw);
+    border-radius: 80px 24px 80px 24px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(26,22,18,0.18);
+  }
+
+  @media (min-width: 768px) {
+    .photo-frame {
+      width: 320px;
+      height: 420px;
+      border-radius: 100px 28px 100px 28px;
+    }
+  }
+
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .photo-badge {
+    position: absolute;
+    bottom: -12px;
+    right: -12px;
+    z-index: 2;
+    background: var(--accent);
+    color: var(--cream);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  [dir="rtl"] .photo-badge {
+    right: auto;
+    left: -12px;
+  }
+
+  /* ── PORTFOLIO ── */
+  #portfolio {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  #portfolio .section-label {
+    color: var(--warm);
+  }
+
+  #portfolio .section-label::after {
+    background: var(--warm);
+  }
+
+  .portfolio-header {
+    margin-bottom: 52px;
+    max-width: 560px;
+  }
+
+  .portfolio-headline {
+    font-family: var(--serif);
+    font-size: clamp(36px, 7vw, 64px);
+    font-weight: 300;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+
+  .portfolio-sub {
+    font-size: 14px;
+    line-height: 1.7;
+    color: rgba(245,240,232,0.55);
+    font-weight: 300;
+  }
+
+  .reels-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media (min-width: 600px) {
+    .reels-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .reel-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #2a2520;
+    aspect-ratio: 9/16;
+    cursor: pointer;
+  }
+
+  .reel-card video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .reel-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,22,18,0.7) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .reel-label {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    color: var(--cream);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    pointer-events: none;
+  }
+
+  [dir="rtl"] .reel-label {
+    left: 16px;
+    right: 16px;
+    text-align: right;
+  }
+
+  .reel-label strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .unmute-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(245,240,232,0.15);
+    border: 1px solid rgba(245,240,232,0.25);
+    color: var(--cream);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    transition: background 0.2s;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+
+  [dir="rtl"] .unmute-btn {
+    right: auto;
+    left: 14px;
+  }
+
+  .unmute-btn:hover {
+    background: rgba(200,87,43,0.5);
+  }
+
+  .unmute-btn svg { width: 16px; height: 16px; }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--cream);
+  }
+
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  @media (min-width: 768px) {
+    .contact-layout {
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+  }
+
+  .contact-intro-headline {
+    font-family: var(--serif);
+    font-size: clamp(36px, 7vw, 60px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+
+  .contact-intro-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .contact-intro-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink);
+    opacity: 0.65;
+    font-weight: 300;
+    max-width: 400px;
+  }
+
+  .contact-card {
+    background: var(--card-dark);
+    border-radius: 24px;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--cream);
+    background: rgba(245,240,232,0.05);
+    border: 1px solid rgba(245,240,232,0.08);
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .contact-link:hover, .contact-link:active {
+    background: rgba(200,87,43,0.15);
+    border-color: rgba(200,87,43,0.35);
+    transform: translateY(-2px);
+  }
+
+  [dir="rtl"] .contact-link {
+    flex-direction: row-reverse;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-icon svg { width: 20px; height: 20px; }
+
+  .contact-link-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  [dir="rtl"] .contact-link-text {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  .contact-link-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+  }
+
+  .contact-link-value {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--cream);
+  }
+
+  .contact-arrow {
+    margin-left: auto;
+    color: rgba(245,240,232,0.2);
+    transition: color 0.2s, transform 0.2s;
+  }
+
+  [dir="rtl"] .contact-arrow {
+    margin-left: 0;
+    margin-right: auto;
+    transform: rotate(180deg);
+  }
+
+  .contact-link:hover .contact-arrow {
+    color: var(--accent);
+    transform: translateX(3px);
+  }
+
+  [dir="rtl"] .contact-link:hover .contact-arrow {
+    transform: rotate(180deg) translateX(3px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.35);
+    padding: 28px 20px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  @media (min-width: 768px) { footer { padding: 28px 40px; } }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ── RTL FONT SWAP ── */
+  [lang="ar"] body,
+  [lang="ar"] .home-tagline,
+  [lang="ar"] .home-bio,
+  [lang="ar"] .meta-label,
+  [lang="ar"] .meta-value,
+  [lang="ar"] .portfolio-sub,
+  [lang="ar"] .contact-intro-text,
+  [lang="ar"] .contact-link-label,
+  [lang="ar"] .contact-link-value,
+  [lang="ar"] .section-label,
+  [lang="ar"] .reel-label,
+  [lang="ar"] footer {
+    font-family: var(--arabic), sans-serif;
+  }
+
+  [lang="ar"] .home-headline,
+  [lang="ar"] .portfolio-headline,
+  [lang="ar"] .contact-intro-headline {
+    font-family: var(--arabic), serif;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  [lang="ar"] .reel-label strong {
+    font-family: var(--arabic), serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  [lang="ar"] .nav-name {
+    font-family: var(--arabic), serif;
+  }
+
+  /* LinkedIn */
+  .icon-li { background: rgba(10,102,194,0.15); }
+  .icon-li svg { color: #0a66c2; }
+
+  /* WhatsApp green */
+  .icon-wa { background: rgba(37,211,102,0.15); }
+  .icon-wa svg { color: #25d366; }
+
+  /* Instagram gradient */
+  .icon-ig { background: rgba(225,48,108,0.15); }
+  .icon-ig svg { color: #e1306c; }
+
+  /* Phone */
+  .icon-phone { background: rgba(200,87,43,0.15); }
+  .icon-phone svg { color: var(--accent); }
+
+  /* ── PDF PROJECTS ── */
+  .projects-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(245,240,232,0.1);
+    margin: 60px 0 52px;
+  }
+
+  .projects-intro {
+    margin-bottom: 36px;
+  }
+
+  .projects-sub-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.35);
+    margin-bottom: 10px;
+  }
+
+  .projects-sub-headline {
+    font-family: var(--serif);
+    font-size: clamp(24px, 4vw, 36px);
+    font-weight: 300;
+    color: var(--cream);
+    letter-spacing: -0.01em;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  @media (min-width: 600px) {
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 1024px) {
+    .projects-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgba(245,240,232,0.04);
+    border: 1px solid rgba(245,240,232,0.09);
+    border-radius: 16px;
+    padding: 24px 22px 20px;
+    text-decoration: none;
+    color: var(--cream);
+    transition: background 0.22s, border-color 0.22s, transform 0.18s;
+    min-height: 180px;
+    gap: 20px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .project-card:hover {
+    background: rgba(200,87,43,0.12);
+    border-color: rgba(200,87,43,0.3);
+    transform: translateY(-3px);
+  }
+
+  .project-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  [dir="rtl"] .project-card-top { flex-direction: row-reverse; }
+
+  .project-tag {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(200,87,43,0.15);
+    border: 1px solid rgba(200,87,43,0.25);
+    padding: 4px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .project-pdf-icon {
+    opacity: 0.3;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+  }
+
+  .project-card:hover .project-pdf-icon { opacity: 0.7; }
+
+  .project-card-bottom {}
+
+  .project-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  [lang="ar"] .project-title {
+    font-family: var(--arabic), serif;
+    font-weight: 600;
+    font-size: 17px;
+  }
+
+  .project-desc {
+    font-size: 12px;
+    color: rgba(245,240,232,0.4);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  [lang="ar"] .project-desc { font-family: var(--arabic), sans-serif; }
+</style>
+</head>
+
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#home" class="nav-logo">
+    <div class="nav-logo-mark"><span>R</span></div>
+    <span class="nav-name" data-en="Roaa Al-Hourani" data-ar="رؤى الحوراني">Roaa Al-Hourani</span>
+  </a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#home" data-en="Home" data-ar="الرئيسية">Home</a></li>
+      <li><a href="#portfolio" data-en="Portfolio" data-ar="الأعمال">Portfolio</a></li>
+      <li><a href="#contact" data-en="Contact" data-ar="التواصل">Contact</a></li>
+    </ul>
+    <button class="lang-toggle" id="langBtn" aria-label="Toggle language">عربي</button>
+  </div>
+</nav>
+
+<!-- ── HOME ── -->
+<section id="home">
+  <div class="section-inner">
+    <p class="section-label reveal">
+      <span data-en="01 — Introduction" data-ar="٠١ — مقدمة">01 — Introduction</span>
+    </p>
+    <div class="home-layout">
+      <div class="home-text">
+        <p class="home-tagline reveal reveal-delay-1"
+           data-en="Digital Marketing Specialist"
+           data-ar="أخصائية تسويق رقمي">
+          Digital Marketing Specialist
+        </p>
+        <h1 class="home-headline reveal reveal-delay-2">
+          <span data-en="Strategy.<br><em>Creativity.</em><br>Results." data-ar="استراتيجية.<br><em>إبداع.</em><br>نتائج.">
+            Strategy.<br><em>Creativity.</em><br>Results.
+          </span>
+        </h1>
+        <p class="home-bio reveal reveal-delay-3"
+           data-en="I build brands that people remember — through sharp strategy, compelling content, and data-driven campaigns. From Meta Ads to SEO audits, every project is crafted with intention."
+           data-ar="أبني علامات تجارية يتذكرها الناس — من خلال استراتيجية دقيقة، ومحتوى مؤثر، وحملات مبنية على البيانات. من إعلانات ميتا إلى تدقيق السيو، كل مشروع أُنجز بهدف واضح.">
+          I build brands that people remember — through sharp strategy, compelling content, and data-driven campaigns. From Meta Ads to SEO audits, every project is crafted with intention.
+        </p>
+        <div class="home-meta reveal reveal-delay-4">
+          <div class="meta-item">
+            <span class="meta-label" data-en="Location" data-ar="الموقع">Location</span>
+            <span class="meta-value" data-en="Amman, Jordan" data-ar="عمّان، الأردن">Amman, Jordan</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label" data-en="Specialty" data-ar="التخصص">Specialty</span>
+            <span class="meta-value" data-en="Meta Ads · SEO · Content" data-ar="إعلانات ميتا · سيو · محتوى">Meta Ads · SEO · Content</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label" data-en="Status" data-ar="الحالة">Status</span>
+            <span class="meta-value"><span class="status-dot"></span><span data-en="Available for work" data-ar="متاحة للعمل">Available for work</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="home-photo-wrap reveal reveal-delay-3">
+        <div class="photo-accent"></div>
+        <div class="photo-frame">
+          <img src="IMG_4939.PNG" alt="Roaa Alhorani">
+        </div>
+        <div class="photo-badge">
+          <span data-en="Open to projects" data-ar="مفتوحة للمشاريع">Open to projects</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio">
+  <div class="section-inner">
+    <p class="section-label reveal">
+      <span data-en="02 — Selected Work" data-ar="٠٢ — أعمال مختارة">02 — Selected Work</span>
+    </p>
+    <div class="portfolio-header">
+      <h2 class="portfolio-headline reveal reveal-delay-1">
+        <span data-en="Work that<br>moves people." data-ar="أعمال تُحرّك<br>القلوب.">Work that<br>moves people.</span>
+      </h2>
+      <p class="portfolio-sub reveal reveal-delay-2"
+         data-en="A selection of reels, campaigns, and brand launches — built for real audiences, designed for real impact."
+         data-ar="مجموعة من الريلز والحملات وإطلاقات العلامات التجارية — مصممة لجماهير حقيقية، لأثر حقيقي.">
+        A selection of reels, campaigns, and brand launches — built for real audiences, designed for real impact.
+      </p>
+    </div>
+
+    <div class="reels-grid">
+
+      <div class="reel-card reveal reveal-delay-1">
+        <video src="Video_Project_1.mp4" autoplay muted loop playsinline preload="auto"></video>
+        <div class="reel-overlay"></div>
+        <button class="unmute-btn" onclick="toggleMute(this)" aria-label="Toggle sound">
+          <!-- muted icon -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+        <div class="reel-overlay"></div>
+        <div class="reel-label">
+          <strong data-en="Content Reel" data-ar="ريل محتوى">Content Reel</strong>
+          <span data-en="Video Production · Social" data-ar="إنتاج فيديو · سوشيال">Video Production · Social</span>
+        </div>
+      </div>
+
+      <div class="reel-card reveal reveal-delay-2">
+        <video src="v2.mp4" autoplay muted loop playsinline preload="auto"></video>
+        <div class="reel-overlay"></div>
+        <button class="unmute-btn" onclick="toggleMute(this)" aria-label="Toggle sound">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+        <div class="reel-label">
+          <strong data-en="Content Creation" data-ar="صناعة المحتوى">Content Creation</strong>
+          <span data-en="Social Media · Video" data-ar="سوشيال ميديا · فيديو">Social Media · Video</span>
+        </div>
+      </div>
+
+      <div class="reel-card reveal reveal-delay-3">
+        <video src="v3.mp4" autoplay muted loop playsinline preload="auto"></video>
+        <div class="reel-overlay"></div>
+        <button class="unmute-btn" onclick="toggleMute(this)" aria-label="Toggle sound">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+        <div class="reel-label">
+          <strong data-en="Campaign Reel" data-ar="ريل حملة">Campaign Reel</strong>
+          <span data-en="Meta Ads · Creative" data-ar="إعلانات ميتا · إبداع">Meta Ads · Creative</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── PDF PROJECTS ── -->
+    <div class="projects-divider"></div>
+    <div class="projects-intro reveal">
+      <p class="projects-sub-label" data-en="Case Studies &amp; Reports" data-ar="دراسات الحالة والتقارير">Case Studies &amp; Reports</p>
+      <h3 class="projects-sub-headline">
+        <span data-en="Strategy behind the work." data-ar="الاستراتيجية خلف الأعمال.">Strategy behind the work.</span>
+      </h3>
+    </div>
+
+    <div class="projects-grid">
+
+      <a href="strategy.pdf" target="_blank" rel="noopener" class="project-card reveal reveal-delay-1">
+        <div class="project-card-top">
+          <span class="project-tag" data-en="Strategy" data-ar="استراتيجية">Strategy</span>
+          <svg class="project-pdf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+        </div>
+        <div class="project-card-bottom">
+          <p class="project-title" data-en="Grill Master<br>Marketing Strategy" data-ar="استراتيجية تسويق<br>Grill Master">Grill Master<br>Marketing Strategy</p>
+          <p class="project-desc" data-en="Full campaign strategy — target audience, KPIs, platforms, content plan, and expected results." data-ar="استراتيجية حملة متكاملة — الجمهور المستهدف، المؤشرات، المنصات، خطة المحتوى والنتائج المتوقعة.">Full campaign strategy — target audience, KPIs, platforms, content plan, and expected results.</p>
+        </div>
+      </a>
+
+      <a href="design.pdf" target="_blank" rel="noopener" class="project-card reveal reveal-delay-2">
+        <div class="project-card-top">
+          <span class="project-tag" data-en="Branding" data-ar="هوية بصرية">Branding</span>
+          <svg class="project-pdf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+        </div>
+        <div class="project-card-bottom">
+          <p class="project-title" data-en="Grill Master<br>Brand Design" data-ar="تصميم هوية<br>Grill Master">Grill Master<br>Brand Design</p>
+          <p class="project-desc" data-en="Logo design, visual identity, social media creatives, and branded promotional materials." data-ar="تصميم الشعار، الهوية البصرية، تصاميم السوشيال ميديا والمواد الترويجية.">Logo design, visual identity, social media creatives, and branded promotional materials.</p>
+        </div>
+      </a>
+
+      <a href="meta_ads.pdf" target="_blank" rel="noopener" class="project-card reveal reveal-delay-3">
+        <div class="project-card-top">
+          <span class="project-tag" data-en="Meta Ads" data-ar="إعلانات ميتا">Meta Ads</span>
+          <svg class="project-pdf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+        </div>
+        <div class="project-card-bottom">
+          <p class="project-title" data-en="Grill Master<br>Meta Ads Campaign" data-ar="حملة إعلانات ميتا<br>Grill Master">Grill Master<br>Meta Ads Campaign</p>
+          <p class="project-desc" data-en="Facebook &amp; Instagram ad setup — audience targeting, budget, ad copy, engagement objective, and Messenger funnel." data-ar="إعداد إعلانات فيسبوك وإنستغرام — الاستهداف، الميزانية، النص الإعلاني، هدف التفاعل وقمع ماسنجر.">Facebook &amp; Instagram ad setup — audience targeting, budget, ad copy, engagement objective, and Messenger funnel.</p>
+        </div>
+      </a>
+
+      <a href="seo.pdf" target="_blank" rel="noopener" class="project-card reveal reveal-delay-4">
+        <div class="project-card-top">
+          <span class="project-tag" data-en="SEO Audit" data-ar="تدقيق سيو">SEO Audit</span>
+          <svg class="project-pdf-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+        </div>
+        <div class="project-card-bottom">
+          <p class="project-title" data-en="7afla — حفلة<br>SEO Audit" data-ar="حفلة — 7afla<br>تدقيق سيو">7afla — حفلة<br>SEO Audit</p>
+          <p class="project-desc" data-en="Full technical SEO audit — page performance, URL structure, image alt text, and mobile optimization recommendations." data-ar="تدقيق سيو تقني شامل — أداء الصفحة، بنية الروابط، نصوص alt للصور، وتوصيات تحسين الجوال.">Full technical SEO audit — page performance, URL structure, image alt text, and mobile optimization recommendations.</p>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label reveal">
+      <span data-en="03 — Let's Talk" data-ar="٠٣ — لنتحدث">03 — Let's Talk</span>
+    </p>
+    <div class="contact-layout">
+      <div>
+        <h2 class="contact-intro-headline reveal reveal-delay-1">
+          <span data-en="Got a<br>project in<br><em>mind?</em>" data-ar="لديك<br>مشروع في<br><em>ذهنك؟</em>">Got a<br>project in<br><em>mind?</em></span>
+        </h2>
+        <p class="contact-intro-text reveal reveal-delay-2"
+           data-en="Whether it's a brand launch, ad campaign, or full digital strategy — reach out and let's make something worth talking about."
+           data-ar="سواء كان إطلاق علامة تجارية، حملة إعلانية، أو استراتيجية رقمية متكاملة — تواصلي معي ولنصنع شيئاً يستحق الحديث.">
+          Whether it's a brand launch, ad campaign, or full digital strategy — reach out and let's make something worth talking about.
+        </p>
+      </div>
+
+      <div class="contact-card reveal reveal-delay-2">
+
+        <a href="https://wa.me/962791117382" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-icon icon-wa">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </div>
+          <div class="contact-link-text">
+            <span class="contact-link-label" data-en="WhatsApp" data-ar="واتساب">WhatsApp</span>
+            <span class="contact-link-value">+962 791 117 382</span>
+          </div>
+          <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+
+        <a href="https://linkedin.com/in/roaa-alhorani" target="_blank" rel="noopener" class="contact-link">
+          <div class="contact-icon icon-li">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </div>
+          <div class="contact-link-text">
+            <span class="contact-link-label" data-en="LinkedIn" data-ar="لينكد إن">LinkedIn</span>
+            <span class="contact-link-value">roaa-alhorani</span>
+          </div>
+          <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+
+        <a href="tel:+962791117382" class="contact-link">
+          <div class="contact-icon icon-phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4a2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.08 6.08l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </div>
+          <div class="contact-link-text">
+            <span class="contact-link-label" data-en="Phone" data-ar="الهاتف">Phone</span>
+            <span class="contact-link-value">+962 791 117 382</span>
+          </div>
+          <svg class="contact-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span data-en="© 2025 Roaa Al-Hourani — Digital Marketing Specialist, Amman" data-ar="© 2025 رؤى الحوراني — أخصائية تسويق رقمي، عمّان">
+    © 2025 Roaa Al-Hourani — Digital Marketing Specialist, Amman
+  </span>
+</footer>
+
+<script>
+  // ── LANGUAGE TOGGLE ──
+  const langBtn = document.getElementById('langBtn');
+  let isArabic = localStorage.getItem('lang') === 'ar';
+
+  function applyLanguage() {
+    const html = document.documentElement;
+    if (isArabic) {
+      html.lang = 'ar';
+      html.dir = 'rtl';
+      langBtn.textContent = 'EN';
+      document.querySelectorAll('[data-ar]').forEach(el => {
+        el.innerHTML = el.getAttribute('data-ar');
+      });
+    } else {
+      html.lang = 'en';
+      html.dir = 'ltr';
+      langBtn.textContent = 'عربي';
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.innerHTML = el.getAttribute('data-en');
+      });
+    }
+  }
+
+  langBtn.addEventListener('click', () => {
+    isArabic = !isArabic;
+    localStorage.setItem('lang', isArabic ? 'ar' : 'en');
+    applyLanguage();
+  });
+
+  applyLanguage();
+
+  // ── SCROLL REVEAL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // Trigger home section immediately
+  setTimeout(() => {
+    document.querySelectorAll('#home .reveal').forEach(el => {
+      el.classList.add('visible');
+    });
+  }, 100);
+
+  // ── MUTE TOGGLE ──
+  const mutedIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+    <line x1="23" y1="9" x2="17" y2="15"></line>
+    <line x1="17" y1="9" x2="23" y2="15"></line>
+  </svg>`;
+
+  const unmutedIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+    <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+    <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+  </svg>`;
+
+  function toggleMute(btn) {
+    const card = btn.closest('.reel-card');
+    const video = card.querySelector('video');
+    video.muted = !video.muted;
+    btn.innerHTML = video.muted ? mutedIcon : unmutedIcon;
+  }
+
+  // ── ACTIVE NAV ──
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 100;
+      if (window.scrollY >= top) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(a => {
+      a.style.opacity = a.getAttribute('href') === '#' + current ? '1' : '0.6';
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>
